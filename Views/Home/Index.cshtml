@@ -1,8 +1,174 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(/images/img_bg_1.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <div class="desc">
+                                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                                    <h1>Special &amp; Fresh Food</h1>
+                                    <p>Chicken karahi, is a dish from the Indian subcontinent noted for its spicy taste. It can be served with naan, roti or rice. This dish is one of the hallmarks of Indian and Pakistani cuisine.</p>
+                                    <p><a href="#ourmenu" class="btn btn-primary btn-lg btn-learn">View Menu</a></p>
+                                    <div class="desc2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url(/images/img_bg_2.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <div class="desc">
+                                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                                    <h1>Exquisite Dishes From Chef</h1>
+                                    <p> Thali is a round platter used to serve food in the Indian subcontinent. Thali is also used to refer to an Indian-style meal made up of a selection of various dishes which are served on a platter.</p>
+                                    <p><a href="#ourmenu" class="btn btn-primary btn-lg btn-learn">View Menu</a></p>
+                                    <div class="desc2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url(/images/img_bg_3.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <div class="desc">
+                                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                                    <h1>Asian Fusion</h1>
+                                    <p>Thakali cuisine—transitional between Himalayan and lowland cuisines—is eaten by Thakali people living in Thak-Khola Valley, an ancient and relatively easy trade route through the high Himalaya.</p>
+                                    <p><a href="#ourmenu" class="btn btn-primary btn-lg btn-learn">View Menu</a></p>
+                                    <div class="desc2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url(/images/img_bg_4.jpg);">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <div class="desc">
+                                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                                    <h1>MO:MO with garlic chautney </h1>
+                                    <p>Momo has become a traditional delicacy in Nepal, Tibet and among Nepalese/Tibetan communities in Bhutan, as well as people of Ladakh, Northeast India and Darjeeling regions of India.</p>
+                                    <p><a href="#ourmenu" class="btn btn-primary btn-lg btn-learn">View Menu</a></p>
+                                    <div class="desc2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="mouse">
+            <a href="#" class="mouse-icon">
+                <div class="mouse-wheel"></div>
+            </a>
+        </div>
+    </div>
+</aside>
+
+@{Html.RenderPartial("_IntroPartialView"); }
+
+<div class="goto-here"></div>
+
+<div class="colorlib-about" class="colorlib-light-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="about-desc">
+                        <div class="col-md-12 col-md-offset-0 animate-box intro-heading">
+                            <span>Welcome to Shangrila Himalayan Kitchen</span>
+                            <h2>Taste of Nepal, India and Halal food one and only in Lake Tahoe</h2>
+                        </div>
+                        <div class="col-md-12 animate-box">
+                            <p>Namaste, Welcome to Shangrila Himalayan Kitchen for a truly Lunch and Dining experience with our diverse menu of as unique Himalayan Nepalese and Indian, Halal food eatery in heart of South Lake Tahoe.<br /> We serve healthy and Fresh Himalayan Nepalese and Indian, Halal food that is prepare daily using top quality organic ingredients from mountains, that makes authentic Nepalese taste and Great northern Indian dishes with perfect flavours. Family environment enjoy a traditional (Thali) Lunch special like Dal Bhat, Tarkari with rice, vegetables, aachar, kheer and lentil dal. We prepare affordable and nutritious food. We have varieties choice of vegetarian and vegan lovers. Chicken Tikka Masala, MoMo are favourite dishes out customers love. We value all our customers with beautiful flavours. We want to welcome all food lovers for great support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6 animate-box">
+                        <div class="about-img" style="background-image: url(/images/about.jpg);">
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate-box">
+                        <div class="about-img about-img-2" style="background-image: url(/images/about-2.jpg);">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="colorlib-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+                <span class="icon"><i class="flaticon-cutlery"></i></span>
+                <h2>Our Delicious Specialties</h2>
+                <p>Himalayan Shangrila Kitchen offers a specialty Indian/Nepalease cuisine, with a great selection of traditional Nepalease, Indian and Halal dishes in an upscale atmosphere. </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 animate-box">
+                <div class="dish-wrap">
+                    <div class="wrap">
+                        <div class="dish-img" style="background-image: url(/images/dish-1.jpg);"></div>
+                        <div class="desc">
+                            <h2><a href="#">Nan with Curry</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-box">
+                <div class="dish-wrap">
+                    <div class="wrap">
+                        <div class="dish-img" style="background-image: url(/images/dish-2.jpg);"></div>
+                        <div class="desc">
+                            <h2><a href="#">Lunch Thali Set</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 animate-box">
+                <div class="dish-wrap">
+                    <div class="wrap">
+                        <div class="dish-img" style="background-image: url(/images/dish-3.jpg);"></div>
+                        <div class="desc">
+                            <h2><a href="#">Himalayan MO:MO</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    Html.RenderPartial("_MenuPartialView");
+}
+
+
+
