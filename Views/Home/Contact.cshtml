@@ -1,0 +1,113 @@
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(/images/cover_bg_2.jpg);" data-stellar-background-ratio="0.5">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <div class="desc">
+                                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                                    <h1>Contact</h1>
+                                    <p><span><a href="/">Home</a></span> <span>Contact</span></p>
+                                    <div class="desc2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+@{Html.RenderPartial("_IntroPartialView"); }
+<div id="colorlib-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+                <h2>Contact Us</h2>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="row">
+                    <div class="col-md-4 animate-box">
+                        <h3>Address</h3>
+                        <ul class="contact-info">
+                            <li><span><i class="icon-map5"></i></span>1142 Ski Run Blvd, South Lake Tahoe, CA 96150</li>
+                            <li><span><i class="icon-phone4"></i></span>+1 (530) 600-3177</li>
+                            <li><span><i class="icon-envelope2"></i></span><a href="#">shangrilahimalayan@gmail.com</a></li>
+                            <li><span><i class="icon-globe3"></i></span><a href="#">www.shangrilahimalayan.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7 col-md-push-1 animate-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea name="" class="form-control" id="" cols="30" rows="7" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Send Message" class="btn btn-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="map" class="colorlib-map"></div>
+
+
+@section scripts {
+    <!-- Google Map -->
+
+    <script>
+        var marker;
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: { lat: 38.944367, lng: - 119.954867 }
+            });
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: { lat: 38.944367, lng: - 119.954867 }
+            });
+            marker.addListener('click', toggleBounce);
+        }
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0r0Po3ucdSIEcEKPvgbYYckIJNXcgrLM&callback=initMap"></script>
+}
