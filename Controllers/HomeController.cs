@@ -40,6 +40,18 @@ namespace shangrila.Controllers
             return View();
         }
 
+        [Route("Menu")]
+        public IActionResult Menus()
+        {
+            return View();
+        }
+
+        [Route("ServiceHour")]
+        public IActionResult ServiceHour()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
