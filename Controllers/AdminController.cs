@@ -22,7 +22,9 @@ namespace shangrila.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            AdminViewModel model = new AdminViewModel();
+            model.Restaurant = _db.Restaurant.FirstOrDefault();
+            return View(model);
         }
 
         public IActionResult BusinessInfo()

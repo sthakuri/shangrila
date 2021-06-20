@@ -1,3 +1,4 @@
+@model shangrila.Models.AdminViewModel
 @{
     ViewBag.Title = "Open Hours";
     Layout="_LayoutAdmin";
@@ -15,7 +16,7 @@
                                 <div class="desc">
                                     <span class="icon"><i class="icon-user-plus2"></i></span>
                                     <h1>Admin Page</h1>
-                                    <p><span><a href="#">Admin</a></span> /<span>Home</span></p>
+                                    <p><span><a href="/Admin">Admin</a></span> /<span>Home</span></p>
                                     <div class="desc2">You are at admin page.</div>
                                 </div>
                             </div>
@@ -36,31 +37,31 @@
                     </div>
                     <div class="panel-body">
                         <div>Business Name:</div>
-                        <h4>Shangrila Himalayan</h4>
+                        <h4>@Model.Restaurant.Name</h4>
                         <ul class="list-group">
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Address</h5>
-                                <p class="list-group-item-text">1142 Ski Run Blvd, South Lake Tahoe, CA 96150</p>
+                                <p class="list-group-item-text">@Model.Restaurant.Address</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Phone</h5>
-                                <p class="list-group-item-text">+1 530-600-3177</p>
+                                <p class="list-group-item-text">@Model.Restaurant.Phone</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Email</h5>
-                                <p class="list-group-item-text">shangrilahimalayan@gmail.com</p>
+                                <p class="list-group-item-text">@Model.Restaurant.Email</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Facebook</h5>
-                                <p class="list-group-item-text">https://www.fb.com/shangrila.himalayan/</p>
+                                <p class="list-group-item-text"><a href="@Model.Restaurant.Facebook" target="_blank">@Model.Restaurant.Facebook</a></p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Instagram</h5>
-                                <p class="list-group-item-text">-</p>
+                                <p class="list-group-item-text"><a href="@Model.Restaurant.Instagram" target="_blank">@Model.Restaurant.Instagram</a></p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Yelp</h5>
-                                <p class="list-group-item-text">https://www.yelp.com/biz/shangrila-himalayan-kitchen-south-lake-tahoe</p>
+                                <p class="list-group-item-text"><a href="@Model.Restaurant.Yelp" target="_blank">@Model.Restaurant.Yelp</a></p>
                             </div>
                         </ul>
                         <a href="/Admin/BusinessInfo" class="btn btn-info btn-outline">Edit</a>
