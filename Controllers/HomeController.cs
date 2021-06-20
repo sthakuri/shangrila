@@ -46,7 +46,7 @@ namespace shangrila.Controllers
             return View();
         }
 
-        [Route("ServiceHour")]
+        [Route("ServiceHours")]
         public IActionResult ServiceHour()
         {
             return View();
