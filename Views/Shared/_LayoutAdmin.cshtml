@@ -44,12 +44,15 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <ul>
-                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/admin">Admin Home</a></li>
                             <li><a href="#ourmenu">Menu</a></li>
-                            <li><a href="/OpenHours">Open Hours</a></li>
+                            <li><a href="/ServiceHours">Open Hours</a></li>
                             @*<li><a href="/Gallery">Gallery</a></li>*@
                             <li><a href="/AboutUs">About us</a></li>
                             <li><a href="/Contact">Contact</a></li>
+                            <li><hr/></li>
+                            <li><a href="/Logout">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -63,7 +66,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="colorlib-navbar-brand">
-                            <a href="/Admin">Admin Home</a>
+                            <a href="/Admin">Admin Home</a><br/>
+                            Hi <label>@User.Claims.FirstOrDefault(c => c.Type == "displayname").Value</label>
                         </div>
                         <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
                     </div>

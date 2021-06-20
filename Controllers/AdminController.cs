@@ -7,17 +7,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using shangrila.Models;
 using shangrila.Data;
+using Microsoft.AspNetCore.Authorization;
+using shangrila.Services;
 
 namespace shangrila.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
         private readonly ShangrilaContext _db;
+        private readonly AuthService _authService;
         public AdminController(ILogger<AdminController> logger, ShangrilaContext dbContext)
         {
             _logger = logger;
             _db = dbContext;
+            _authService= new AuthService();
         }
 
         public IActionResult Index()
@@ -31,7 +36,7 @@ namespace shangrila.Controllers
         {
             Restaurant model = _db.Restaurant.FirstOrDefault();
             
-            return View(model);
+            return View("user", model);
         }
 
         [HttpPost]
@@ -54,6 +59,33 @@ namespace shangrila.Controllers
             }
             _db.SaveChanges();
             ViewBag.Msg="Information saved.";
+            return View("User", model);
+        }
+
+        
+        [Authorize(Roles ="Admin")]
+        public IActionResult Users()
+        {
+            var model = _db.Users.ToList();
+            
+            return View(model);
+        }
+        
+        [Authorize(Roles ="Admin")]
+        [HttpPost]
+        public IActionResult Users(string name, string email, string password)
+        {
+            _db.Users.Add(new Models.User(){
+                DisplayName= name,
+                UserName = email,
+                IsLocked=false,
+                LastLoggedIn=DateTime.Now,
+                Password=_authService.HashPassword(password)
+            });
+            _db.SaveChanges();
+
+             var model = _db.Users.ToList();
+            
             return View(model);
         }
 

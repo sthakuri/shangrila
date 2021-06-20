@@ -15,6 +15,7 @@ namespace shangrila
 {
     public class Startup
     {
+        public const string CookieScheme = "Shangrila";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,9 +26,20 @@ namespace shangrila
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddSessionStateTempDataProvider();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
+
             services.AddDbContext<ShangrilaContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAuthentication(CookieScheme) // Sets the default scheme to cookies
+                .AddCookie(CookieScheme, options =>
+                {
+                    options.AccessDeniedPath = "/account/denied";
+                    options.LoginPath = "/login";
+                });
+       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +60,7 @@ namespace shangrila
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
