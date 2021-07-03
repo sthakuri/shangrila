@@ -58,10 +58,13 @@ namespace shangrila.Controllers
             return View();
         }
 
-        [Route("ServiceHours")]
+        [Route("ServiceHour")]
         public IActionResult ServiceHour()
         {
-            return View();
+            var model = new HomeViewModel();
+            model.Restaurant = _db.Restaurant.FirstOrDefault();
+            model.ServiceHours = _db.ServiceHours.ToList();
+            return View(model);
         }
 
         [Route("Login")]

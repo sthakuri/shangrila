@@ -1,3 +1,4 @@
+@model shangrila.Models.Restaurant
 <div class="colorlib-intro">
     <div class="container">
         <div class="row">
@@ -7,7 +8,7 @@
                         <i class="icon-map4"></i>
                     </span>
                     <h2>Address</h2>
-                    <p><a href="https://goo.gl/maps/U8uztkLNoQvuEEiz9" target="_blank">1142 Ski Run Blvd, South Lake Tahoe, CA 96150</a></p>
+                    <p><a href="javascript:void(0)">@Model.Address</a></p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 text-center">
@@ -26,7 +27,7 @@
                         <i class="icon-mobile2"></i>
                     </span>
                     <h2>Phone</h2>
-                    <p>+1 530-600-3177</p>
+                    <p>@Model.Phone</p>
                     <p></p>
                 </div>
             </div>
@@ -36,7 +37,7 @@
                         <i class="icon-envelope"></i>
                     </span>
                     <h2>Email</h2>
-                    <p><a href="#">shangrilahimalayan@gmail.com</a></p>
+                    <p><a href="javascript:void(0)">@Model.Email</a></p>
                 </div>
             </div>
         </div>

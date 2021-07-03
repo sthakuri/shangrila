@@ -1,0 +1,153 @@
+@model shangrila.Models.AdminViewModel
+@{
+    ViewBag.Title = "Edit Service Hours";
+    Layout="_LayoutAdmin";
+}
+
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url(/images/admin-bg-1.jpg);" data-stellar-background-ratio="0.5">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-3 slider-text">
+                            <div class="slider-text-inner text-center">
+                                <div class="desc">
+                                    <span class="icon"><i class="icon-clock"></i></span>
+                                    <h1>Admin Page</h1>
+                                    <p><span><a href="/Admin">Admin</a></span> /<span>Service Hours</span></p>
+                                    <div class="desc2">You are at service hours page.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+<div id="colorlib-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                @if(!string.IsNullOrEmpty(ViewBag.Msg)){
+                    <div class="alert alert-success" role="alert">@ViewBag.Msg</div>
+                }
+                <form asp-controller="Admin" asp-action="ServiceHours" method="post">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Service Hours
+                        </div>
+                        <div class="form-group panel-body">
+                            <ul class="list-group mb-4">
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Sunday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Sunday.IsOpen">
+                                                <label class="form-check-label" asp-for="Sunday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Sunday.ServiceHours">
+                                </div>
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Monday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Monday.IsOpen">
+                                                <label class="form-check-label" asp-for="Monday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Monday.ServiceHours">
+                                </div>
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Tuesday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Tuesday.IsOpen">
+                                                <label class="form-check-label" asp-for="Tuesday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Tuesday.ServiceHours">
+                                </div>
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Wednesday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Wednesday.IsOpen">
+                                                <label class="form-check-label" asp-for="Wednesday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Wednesday.ServiceHours">
+                                </div>
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Thursday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Thursday.IsOpen">
+                                                <label class="form-check-label" asp-for="Thursday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Thursday.ServiceHours">
+                                </div>
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Friday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Friday.IsOpen">
+                                                <label class="form-check-label" asp-for="Friday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Friday.ServiceHours">
+                                </div>
+                                <div href="#" class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <lable class="list-group-item-heading h5">Saturday</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" asp-for="Saturday.IsOpen">
+                                                <label class="form-check-label" asp-for="Saturday.IsOpen">Open</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Service Hours. e.g 11:00am-2:30pm, 4:30pm-9:00pm" asp-for="Saturday.ServiceHours" autocomplete="off">
+                                </div>
+                            </ul>
+                            <button type="submit" class="btn btn-info btn-outline">Save</button>
+                            <a href="/admin" class="btn btn-outline">Go to Admin Page</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

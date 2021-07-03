@@ -86,7 +86,8 @@
         </div>
     </div>
 </aside>
-<partial name="_IntroPartialView"></partial>
+
+@await Html.PartialAsync("_IntroPartialView", Model.Restaurant)
 
 <div class="goto-here"></div>
 

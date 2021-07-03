@@ -1,20 +1,10 @@
+@model shangrila.Models.HomeViewModel
 @{
     ViewBag.Title = "Open Hours";
 }
 @{
-    var openHours = new Dictionary<string, string[]>();
-    openHours.Add("Sunday", new string[] { "11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM" });
-    openHours.Add("Monday", new string[] { "Closed" });
-    openHours.Add("Tuesday", new string[] { "11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM" });
-    openHours.Add("Wednesday", new string[] { "11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM" });
-    openHours.Add("Thursday", new string[] { "11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM" });
-    openHours.Add("Friday", new string[] { "11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM" });
-    openHours.Add("Saturday", new string[] { "11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM" });
 
     var areWeOpen = DateTime.Today.DayOfWeek.ToString();
-    var day = openHours.FirstOrDefault(x => x.Key == DateTime.Today.DayOfWeek.ToString());
-    DateTime today = DateTime.Today;
-    //new DateTime()
 
 }
 <aside id="colorlib-hero">
@@ -40,7 +30,7 @@
         </ul>
     </div>
 </aside>
-<partial name="_IntroPartialView"></partial>
+@await Html.PartialAsync("_IntroPartialView", Model.Restaurant)
 
 <div id="colorlib-contact">
     <div class="container">
@@ -48,29 +38,23 @@
             <div class="col-md-12 text-center animate-box intro-heading">
                 <label class="alert alert-info">Today is @areWeOpen</label>
                 <h2>Open Hours</h2>
-                <p>We are open 6 days a week.</p>
+                <p>We are open @Model.ServiceHours.Count(x=> x.IsOpen) days a week.</p>
                 <ul class="contact-info">
-                    @foreach (var item in openHours)
+                    @foreach (var item in Model.ServiceHours)
                     {
                         <li>
-                            @if(string.Compare(item.Key, "Monday", false)==0)
+                            @if(item.IsOpen)
                             {
-                                <div class="alert alert-warning">
-                                    <h4>@item.Key</h4>
-                                    @foreach (var time in item.Value)
-                                    {
-                                        <p> @time</p>
-                                    }
+                                <div class="alert alert-info">
+                                    <h4>@item.WeekDay</h4>
+                                    <p>@item.ServiceHours</p>
                                 </div>
                             }
                             else
                             {
-                                <div class="alert alert-info">
-                                    <h4>@item.Key</h4>
-                                    @foreach (var time in item.Value)
-                                    {
-                                        <p> @time</p>
-                                    }
+                                <div class="alert alert-danger">
+                                    <h4>@item.WeekDay</h4>
+                                    <p>Closed</p>
                                 </div>
                             }
                         </li>

@@ -4,8 +4,7 @@ namespace shangrila.Models
     {
         public int ID { get; set; }
         public string WeekDay { get; set; }
-        public string StartTime { get; set; }
-        public string CloseTime { get; set; }
-        public bool Visible { get; set; }
+        public string ServiceHours { get; set; }
+        public bool IsOpen { get; set; }
     }
 }

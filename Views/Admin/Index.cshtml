@@ -71,16 +71,40 @@
             <div class="col-sm-12 col-md-6">
                 <div class="panel panel-primary">
             <div class="panel-heading">
-                Business Info
+                Service Hours
             </div>
             <div class="panel-body">
-                <p>Business Name:</p>
-                <p>Address: <br/>
-                Phone: <br/>Email:<br/>Facebook:</p>
-                <p>Twitter:</p>
-                <p>Instagram:</p>
-                <p>Yelp:</p>
-                <a href="#" class="btn btn-info btn-outline">Edit</a>
+                <ul class="list-group">
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Sunday</h5>
+                        <p class="list-group-item-text">@Model.Sunday.ServiceHours</p>
+                    </div>
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Monday</h5>
+                        <p class="list-group-item-text">@Model.Monday.ServiceHours</p>
+                    </div>
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Tuesday</h5>
+                        <p class="list-group-item-text">@Model.Tuesday.ServiceHours</p>
+                    </div>
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Wednesday</h5>
+                        <p class="list-group-item-text">@Model.Wednesday.ServiceHours</p>
+                    </div>
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Thursday</h5>
+                        <p class="list-group-item-text">@Model.Thursday.ServiceHours</p>
+                    </div>
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Friday</h5>
+                        <p class="list-group-item-text">@Model.Friday.ServiceHours</p>
+                    </div>
+                    <div href="#" class="list-group-item">
+                        <h5 class="list-group-item-heading">Saturday</h5>
+                        <p class="list-group-item-text">@Model.Saturday.ServiceHours</p>
+                    </div>
+                </ul>
+                <a href="/Admin/ServiceHours" class="btn btn-info btn-outline">Edit</a>
             </div>
             </div>
             </div>
