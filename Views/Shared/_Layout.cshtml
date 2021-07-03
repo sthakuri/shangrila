@@ -62,8 +62,10 @@
     <div id="colorlib-page">
         <header>
             <div class="container">
-                
-                @* <div class="alert alert-info">Special Timing: Open Time 4:00PM, Jun 19, 2021 Saturday.</div>  *@
+                @if(!string.IsNullOrEmpty(string.Format("{0}",TempData.Peek("Announcement"))))
+                {
+                    <div class="alert alert-success">@string.Format("{0}",TempData["Announcement"])</div>
+                }
                 <div class="row">
                     <div class="col-md-12">
                         <div class="colorlib-navbar-brand logo">

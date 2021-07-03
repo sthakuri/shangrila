@@ -32,6 +32,7 @@ namespace shangrila.Controllers
             HomeViewModel model = new HomeViewModel();
             model.Restaurant = _db.Restaurant.FirstOrDefault();
             model.ServiceHours = _db.ServiceHours.ToList();
+            TempData["Announcement"]="Hello";
             return View(model);
         }
 
