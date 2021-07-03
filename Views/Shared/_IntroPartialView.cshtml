@@ -1,33 +1,41 @@
-@model shangrila.Models.Restaurant
+@model shangrila.Models.HomeViewModel
+@{
+    var today = Model.ServiceHours.FirstOrDefault(x=> x.WeekDay == DateTime.Today.DayOfWeek.ToString());
+
+}
 <div class="colorlib-intro">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6 text-center">
+            <div class="col-md-4 col-sm-6 text-center">
                 <div class="intro animate-box">
                     <span class="icon">
                         <i class="icon-map4"></i>
                     </span>
                     <h2>Address</h2>
-                    <p><a href="javascript:void(0)">@Model.Address</a></p>
+                    <p><a href="javascript:void(0)">@Model.Restaurant.Address</a></p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 text-center">
                 <div class="intro animate-box">
                     <span class="icon">
-                        <i class="icon-clock4"></i>
+                        <i class="icon-clock"></i>
                     </span>
-                    <h2>Opening Time</h2>
-                   <p>Tue - Sun: 11:00 AM - 2:30 PM, 4:30 PM - 9:00 PM</p>
-                    <p>Mon: Closed</p>
+                    @if(today.IsOpen){
+                        <h2>We are open today.</h2>
+                        <p>@today.ServiceHours</p>
+                    }else{
+                        <h2>Sorry, we are closed today.</h2>
+                        <p>Visit <a href="ServiceHour">Open Hours</a> for service hours.</p>
+                    }
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 text-center">
+            <div class="col-md-2 col-sm-6 text-center">
                 <div class="intro animate-box">
                     <span class="icon">
                         <i class="icon-mobile2"></i>
                     </span>
                     <h2>Phone</h2>
-                    <p>@Model.Phone</p>
+                    <p>@Model.Restaurant.Phone</p>
                     <p></p>
                 </div>
             </div>
@@ -37,7 +45,7 @@
                         <i class="icon-envelope"></i>
                     </span>
                     <h2>Email</h2>
-                    <p><a href="javascript:void(0)">@Model.Email</a></p>
+                    <p><a href="javascript:void(0)">@Model.Restaurant.Email</a></p>
                 </div>
             </div>
         </div>

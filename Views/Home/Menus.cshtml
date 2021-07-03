@@ -1,4 +1,4 @@
-
+@model shangrila.Models.HomeViewModel
 @{
     ViewBag.Title = "Menu";
 }
@@ -26,5 +26,5 @@
         </ul>
     </div>
 </aside>
-<partial name="_IntroPartialView"></partial>
-<partial name="_MenuPartialView"></partial>
+@await Html.PartialAsync("_IntroPartialView", Model)
+@await Html.PartialAsync("_MenuPartialView", Model)

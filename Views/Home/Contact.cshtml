@@ -1,4 +1,4 @@
-
+@model shangrila.Models.HomeViewModel
 @{
     ViewBag.Title = "Contact";
 }
@@ -27,7 +27,7 @@
     </div>
 </aside>
 
-<partial name="_IntroPartialView"></partial>
+@await Html.PartialAsync("_IntroPartialView", Model)
 
 <div id="colorlib-contact">
     <div class="container">

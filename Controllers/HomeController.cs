@@ -31,7 +31,7 @@ namespace shangrila.Controllers
         {
             HomeViewModel model = new HomeViewModel();
             model.Restaurant = _db.Restaurant.FirstOrDefault();
-            //model.Menus = _db.DishMenus
+            model.ServiceHours = _db.ServiceHours.ToList();
             return View(model);
         }
 
@@ -43,19 +43,28 @@ namespace shangrila.Controllers
         [Route("AboutUs")]
         public IActionResult AboutUs()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+            model.Restaurant = _db.Restaurant.FirstOrDefault();
+            model.ServiceHours = _db.ServiceHours.ToList();
+            return View(model);
         }
 
         [Route("Contact")]
         public IActionResult Contact()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+            model.Restaurant = _db.Restaurant.FirstOrDefault();
+            model.ServiceHours = _db.ServiceHours.ToList();
+            return View(model);
         }
 
         [Route("Menu")]
         public IActionResult Menus()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+            model.Restaurant = _db.Restaurant.FirstOrDefault();
+            model.ServiceHours = _db.ServiceHours.ToList();
+            return View(model);
         }
 
         [Route("ServiceHour")]
