@@ -29,7 +29,10 @@ namespace shangrila.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            HomeViewModel model = new HomeViewModel();
+            model.Restaurant = _db.Restaurant.FirstOrDefault();
+            //model.Menus = _db.DishMenus
+            return View(model);
         }
 
         public IActionResult Privacy()

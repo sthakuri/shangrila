@@ -1,4 +1,5 @@
-﻿@{
+﻿@model shangrila.Models.HomeViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -96,11 +97,11 @@
                 <div class="row">
                     <div class="about-desc">
                         <div class="col-md-12 col-md-offset-0 animate-box intro-heading">
-                            <span>Welcome to Shangrila Himalayan Kitchen</span>
+                            <span>Welcome to @Model.Restaurant.Name</span>
                             <h2>Taste of Nepal, India and Halal food one and only in Lake Tahoe</h2>
                         </div>
                         <div class="col-md-12 animate-box">
-                            <p>Namaste, Welcome to Shangrila Himalayan Kitchen for a truly Lunch and Dining experience with our diverse menu of as unique Himalayan Nepalese and Indian, Halal food eatery in heart of South Lake Tahoe.<br /> We serve healthy and Fresh Himalayan Nepalese and Indian, Halal food that is prepare daily using top quality organic ingredients from mountains, that makes authentic Nepalese taste and Great northern Indian dishes with perfect flavours. Family environment enjoy a traditional (Thali) Lunch special like Dal Bhat, Tarkari with rice, vegetables, aachar, kheer and lentil dal. We prepare affordable and nutritious food. We have varieties choice of vegetarian and vegan lovers. Chicken Tikka Masala, MoMo are favourite dishes out customers love. We value all our customers with beautiful flavours. We want to welcome all food lovers for great support.</p>
+                            <p>Namaste, Welcome to @Model.Restaurant.Name for a truly Lunch and Dining experience with our diverse menu of as unique Himalayan Nepalese and Indian, Halal food eatery in heart of South Lake Tahoe.<br /> We serve healthy and Fresh Himalayan Nepalese and Indian, Halal food that is prepare daily using top quality organic ingredients from mountains, that makes authentic Nepalese taste and Great northern Indian dishes with perfect flavours. Family environment enjoy a traditional (Thali) Lunch special like Dal Bhat, Tarkari with rice, vegetables, aachar, kheer and lentil dal. We prepare affordable and nutritious food. We have varieties choice of vegetarian and vegan lovers. Chicken Tikka Masala, MoMo are favourite dishes out customers love. We value all our customers with beautiful flavours. We want to welcome all food lovers for great support.</p>
                         </div>
                     </div>
                 </div>
@@ -127,7 +128,7 @@
             <div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
                 <span class="icon"><i class="flaticon-cutlery"></i></span>
                 <h2>Our Delicious Specialties</h2>
-                <p>Himalayan Shangrila Kitchen offers a specialty Indian/Nepalease cuisine, with a great selection of traditional Nepalease, Indian and Halal dishes in an upscale atmosphere. </p>
+                <p>@Model.Restaurant.Name offers a specialty Indian/Nepalease cuisine, with a great selection of traditional Nepalease, Indian and Halal dishes in an upscale atmosphere. </p>
             </div>
         </div>
         <div class="row">

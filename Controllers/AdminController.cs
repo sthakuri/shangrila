@@ -36,7 +36,7 @@ namespace shangrila.Controllers
         {
             Restaurant model = _db.Restaurant.FirstOrDefault();
             
-            return View("user", model);
+            return View(model);
         }
 
         [HttpPost]
@@ -59,7 +59,7 @@ namespace shangrila.Controllers
             }
             _db.SaveChanges();
             ViewBag.Msg="Information saved.";
-            return View("User", model);
+            return View(model);
         }
 
         
