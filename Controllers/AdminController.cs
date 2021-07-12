@@ -29,13 +29,13 @@ namespace shangrila.Controllers
         {
             AdminViewModel model = new AdminViewModel();
             model.Restaurant = _db.Restaurant.FirstOrDefault();
-            model.Sunday = new ServiceHour();
-            model.Monday = new ServiceHour();
-            model.Tuesday = new ServiceHour();
-            model.Wednesday = new ServiceHour();
-            model.Thursday = new ServiceHour();
-            model.Friday = new ServiceHour();
-            model.Saturday = new ServiceHour();
+            model.Sunday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Sunday");
+            model.Monday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Monday");
+            model.Tuesday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Tuesday");
+            model.Wednesday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Wednesday");
+            model.Thursday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Thursday");
+            model.Friday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Friday");
+            model.Saturday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Saturday");
             return View(model);
         }
 

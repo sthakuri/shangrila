@@ -64,7 +64,11 @@
             <div class="container">
                 @if(!string.IsNullOrEmpty(string.Format("{0}",TempData.Peek("Announcement"))))
                 {
-                    <div class="alert alert-success">@string.Format("{0}",TempData["Announcement"])</div>
+                    <div class="alert alert-success">@string.Format("{0}",TempData["Announcement"])
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 }
                 <div class="row">
                     <div class="col-md-12">
