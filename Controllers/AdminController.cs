@@ -38,7 +38,7 @@ namespace shangrila.Controllers
             model.Friday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Friday");
             model.Saturday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Saturday");
 
-            model.Announcements = _db.Announcements.Where(x=> x.Visible && (DateTime.Compare(x.ValidFrom.Date, DateTime.Today.Date)>=0 || DateTime.Compare(x.ValidTo.Date, DateTime.Today.Date)<=0)).ToList();
+            model.Announcements = _db.Announcements.Where(x=> x.Visible && x.ValidTo.Date >= DateTime.Today).ToList();
             return View(model);
         }
 
@@ -128,7 +128,7 @@ namespace shangrila.Controllers
         {
             AdminViewModel model = new AdminViewModel();
             
-            model.Announcements = _db.Announcements.Where(x=> x.Visible && (DateTime.Compare(x.ValidFrom.Date, DateTime.Today.Date)>=0 || DateTime.Compare(x.ValidTo.Date, DateTime.Today.Date)<=0)).ToList();
+            model.Announcements = _db.Announcements.Where(x=> x.Visible && x.ValidTo.Date >= DateTime.Today).ToList();
             model.Announcement = new Announcement(){
                 ValidFrom = DateTime.Today,
                 ValidTo = DateTime.Today
@@ -159,7 +159,7 @@ namespace shangrila.Controllers
                 }
             }
             
-            model.Announcements = _db.Announcements.Where(x=> x.Visible && (DateTime.Compare(x.ValidFrom.Date, DateTime.Today.Date)>=0 || DateTime.Compare(x.ValidTo.Date, DateTime.Today.Date)<=0)).ToList();
+            model.Announcements = _db.Announcements.Where(x=> x.Visible && x.ValidTo.Date >= DateTime.Today).ToList();
             model.Announcement = new Announcement(){
                 ValidFrom = DateTime.Today,
                 ValidTo = DateTime.Today
