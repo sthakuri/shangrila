@@ -107,6 +107,8 @@ namespace shangrila.Controllers
                 var isValid = _authService.VerifyPassword(hashedPassword, password);
                 if(isValid)
                 {
+                    userAccount.LastLoggedIn = DateTime.Now;
+                    await _db.SaveChangesAsync();
                     
                     var role="User";
                     if(email=="sthakuri")

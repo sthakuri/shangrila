@@ -16,5 +16,7 @@ namespace shangrila.Models
         public List<Announcement> Announcements { get; set; }
         public Announcement Announcement { get; set; }
 
+        public List<User> Users { get; set; }
+
     }
 }

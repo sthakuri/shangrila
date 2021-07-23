@@ -72,79 +72,85 @@
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="panel panel-primary">
-            <div class="panel-heading">
-                Service Hours
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Sunday</h5>
-                        <p class="list-group-item-text">@Model.Sunday.ServiceHours</p>
+                    <div class="panel-heading">
+                        Service Hours
                     </div>
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Monday</h5>
-                        <p class="list-group-item-text">@Model.Monday.ServiceHours</p>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Sunday</h5>
+                                <p class="list-group-item-text">@Model.Sunday.ServiceHours</p>
+                            </div>
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Monday</h5>
+                                <p class="list-group-item-text">@Model.Monday.ServiceHours</p>
+                            </div>
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Tuesday</h5>
+                                <p class="list-group-item-text">@Model.Tuesday.ServiceHours</p>
+                            </div>
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Wednesday</h5>
+                                <p class="list-group-item-text">@Model.Wednesday.ServiceHours</p>
+                            </div>
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Thursday</h5>
+                                <p class="list-group-item-text">@Model.Thursday.ServiceHours</p>
+                            </div>
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Friday</h5>
+                                <p class="list-group-item-text">@Model.Friday.ServiceHours</p>
+                            </div>
+                            <div href="#" class="list-group-item">
+                                <h5 class="list-group-item-heading">Saturday</h5>
+                                <p class="list-group-item-text">@Model.Saturday.ServiceHours</p>
+                            </div>
+                        </ul>
+                        <a href="/Admin/ServiceHours" class="btn btn-info btn-outline">Edit</a>
                     </div>
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Tuesday</h5>
-                        <p class="list-group-item-text">@Model.Tuesday.ServiceHours</p>
-                    </div>
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Wednesday</h5>
-                        <p class="list-group-item-text">@Model.Wednesday.ServiceHours</p>
-                    </div>
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Thursday</h5>
-                        <p class="list-group-item-text">@Model.Thursday.ServiceHours</p>
-                    </div>
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Friday</h5>
-                        <p class="list-group-item-text">@Model.Friday.ServiceHours</p>
-                    </div>
-                    <div href="#" class="list-group-item">
-                        <h5 class="list-group-item-heading">Saturday</h5>
-                        <p class="list-group-item-text">@Model.Saturday.ServiceHours</p>
-                    </div>
-                </ul>
-                <a href="/Admin/ServiceHours" class="btn btn-info btn-outline">Edit</a>
-            </div>
-            </div>
+                </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <div class="panel panel-primary">
-            <div class="panel-heading">
-                Upcoming Announcements
+                    <div class="panel-heading">
+                        Upcoming Announcements
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            @foreach (var announcement in Model.Announcements)
+                            {
+                                <div href="#" class="list-group-item">
+                                    <h5 class="list-group-item-heading">@announcement.Name</h5>
+                                    <p class="list-group-item-text">From: @announcement.ValidFrom.ToString("MMM dd,yyyy"), To: @announcement.ValidTo.ToString("MMM dd, yyyy")</p>
+                                </div>
+                            }
+                        </ul>
+                        <a href="/admin/announcements/" class="btn btn-info btn-outline">Edit</a>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    @foreach (var announcement in Model.Announcements)
-                    {
-                        <div href="#" class="list-group-item">
-                            <h5 class="list-group-item-heading">@announcement.Name</h5>
-                            <p class="list-group-item-text">From: @announcement.ValidFrom.ToString("MMM dd,yyyy"), To: @announcement.ValidTo.ToString("MMM dd, yyyy")</p>
+            @if(@User.Claims.FirstOrDefault(c => c.Type == "role").Value=="Admin")
+            {
+                <div class="col-sm-12 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Users
                         </div>
-                    }
-                </ul>
-                <a href="/admin/announcements/" class="btn btn-info btn-outline">Edit</a>
-            </div>
-            </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div class="panel panel-primary">
-            <div class="panel-heading">
-                Business Info
-            </div>
-            <div class="panel-body">
-                <p>Business Name:</p>
-                <p>Address: <br/>
-                Phone: <br/>Email:<br/>Facebook:</p>
-                <p>Twitter:</p>
-                <p>Instagram:</p>
-                <p>Yelp:</p>
-                <a href="#" class="btn btn-info btn-outline">Edit</a>
-            </div>
-            </div>
-            </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                @foreach (var user in Model.Users)
+                                {
+                                    <div href="#" class="list-group-item">
+                                        <h5 class="list-group-item-heading">@user.DisplayName</h5>
+                                        <p class="list-group-item-text">Username: @user.UserName, Last Logged In Time: @user.LastLoggedIn.ToString("MMM dd, yyyy hh:mm:ss tt")</p>
+                                    </div>
+                                }
+                            </ul>
+                            <a href="/admin/users/" class="btn btn-info btn-outline">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>

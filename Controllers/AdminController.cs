@@ -12,7 +12,7 @@ using shangrila.Services;
 
 namespace shangrila.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
@@ -39,6 +39,8 @@ namespace shangrila.Controllers
             model.Saturday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Saturday");
 
             model.Announcements = _db.Announcements.Where(x=> x.Visible && x.ValidTo.Date >= DateTime.Today).ToList();
+
+            model.Users = _db.Users.ToList();
             return View(model);
         }
 
@@ -167,24 +169,34 @@ namespace shangrila.Controllers
             return View(model);
         }
                 
+        [Authorize(Roles ="Admin")] 
         public IActionResult Users()
         {
             var model = _db.Users.ToList();
-            
             return View(model);
         }
-                
+
+        [Authorize(Roles ="Admin")]  
         [HttpPost]
-        public IActionResult Users(string name, string email, string password)
+        public IActionResult Users(int id, string name, string email, string password)
         {
-            _db.Users.Add(new Models.User(){
-                DisplayName= name,
-                UserName = email,
-                IsLocked=false,
-                LastLoggedIn=DateTime.Now,
-                Password=_authService.HashPassword(password)
-            });
-            _db.SaveChanges();
+            if(!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+            {
+                _db.Users.Add(new Models.User(){
+                    DisplayName= name,
+                    UserName = email,
+                    IsLocked=false,
+                    LastLoggedIn=DateTime.Now,
+                    Password=_authService.HashPassword(password)
+                });
+                _db.SaveChanges();
+            }
+            else if( id>0){
+                var item = _db.Users.FirstOrDefault(x=>x.ID == id);
+                _db.Users.Remove(item);
+                _db.SaveChanges();
+            }
+            
 
              var model = _db.Users.ToList();
             
