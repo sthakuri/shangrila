@@ -13,5 +13,8 @@ namespace shangrila.Models
         public ServiceHour Friday { get; set; }
         public ServiceHour Saturday { get; set; }
 
+        public List<Announcement> Announcements { get; set; }
+        public Announcement Announcement { get; set; }
+
     }
 }

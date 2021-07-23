@@ -1920,23 +1920,19 @@ header .colorlib-navbar-brand {
     -ms-box-shadow: none;
     -o-box-shadow: none;
     box-shadow: none;
-    border: none;
-    border: transparent;
     font-size: 16px;
-    font-weight: 300;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -ms-border-radius: 0px;
-    border-radius: 0px;
+    font-weight: 300;    
 }
+
 
     .form-control:focus, .form-control:active {
         -webkit-box-shadow: none;
         box-shadow: none;
     }
 
-input[type="text"] {
+.input[type=text]{
     height: 50px;
+    border:rgba(0, 0, 0, 0.4) solid #c5bfbf !important;
 }
 
 .form-group {

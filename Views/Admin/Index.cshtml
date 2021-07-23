@@ -113,16 +113,19 @@
             <div class="col-sm-12 col-md-6">
                 <div class="panel panel-primary">
             <div class="panel-heading">
-                Make an announcement
+                Upcoming Announcements
             </div>
             <div class="panel-body">
-                <p>Business Name:</p>
-                <p>Address: <br/>
-                Phone: <br/>Email:<br/>Facebook:</p>
-                <p>Twitter:</p>
-                <p>Instagram:</p>
-                <p>Yelp:</p>
-                <a href="#" class="btn btn-info btn-outline">Edit</a>
+                <ul class="list-group">
+                    @foreach (var announcement in Model.Announcements)
+                    {
+                        <div href="#" class="list-group-item">
+                            <h5 class="list-group-item-heading">@announcement.Name</h5>
+                            <p class="list-group-item-text">From: @announcement.ValidFrom.ToString("MMM dd,yyyy"), To: @announcement.ValidTo.ToString("MMM dd, yyyy")</p>
+                        </div>
+                    }
+                </ul>
+                <a href="/admin/announcements/" class="btn btn-info btn-outline">Edit</a>
             </div>
             </div>
             </div>

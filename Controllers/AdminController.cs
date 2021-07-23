@@ -12,7 +12,7 @@ using shangrila.Services;
 
 namespace shangrila.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
@@ -29,6 +29,7 @@ namespace shangrila.Controllers
         {
             AdminViewModel model = new AdminViewModel();
             model.Restaurant = _db.Restaurant.FirstOrDefault();
+
             model.Sunday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Sunday");
             model.Monday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Monday");
             model.Tuesday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Tuesday");
@@ -36,6 +37,8 @@ namespace shangrila.Controllers
             model.Thursday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Thursday");
             model.Friday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Friday");
             model.Saturday = _db.ServiceHours.FirstOrDefault(x=> x.WeekDay == "Saturday");
+
+            model.Announcements = _db.Announcements.Where(x=> x.Visible && (DateTime.Compare(x.ValidFrom.Date, DateTime.Today.Date)>=0 || DateTime.Compare(x.ValidTo.Date, DateTime.Today.Date)<=0)).ToList();
             return View(model);
         }
 
@@ -82,7 +85,7 @@ namespace shangrila.Controllers
             
             return View(model);
         }
-
+        
         [HttpPost]        
         public IActionResult ServiceHours(AdminViewModel model)
         {
@@ -120,17 +123,57 @@ namespace shangrila.Controllers
             
             return View(model);
         }
-
         
-        [Authorize(Roles ="Admin")]
+        public IActionResult Announcements()
+        {
+            AdminViewModel model = new AdminViewModel();
+            
+            model.Announcements = _db.Announcements.Where(x=> x.Visible && (DateTime.Compare(x.ValidFrom.Date, DateTime.Today.Date)>=0 || DateTime.Compare(x.ValidTo.Date, DateTime.Today.Date)<=0)).ToList();
+            model.Announcement = new Announcement(){
+                ValidFrom = DateTime.Today,
+                ValidTo = DateTime.Today
+            };
+            return View(model);
+        }
+        
+        [HttpPost]
+        public IActionResult Announcements(int id, AdminViewModel model)
+        {
+            //if id exist: delete operation
+            //if model exist: add operation
+            
+            if(model.Announcement != null && !string.IsNullOrEmpty(model.Announcement.Name))
+            {
+                model.Announcement.Visible = true;
+                _db.Announcements.Add(model.Announcement);
+                _db.SaveChanges();
+                ViewBag.Msg="Information saved.";
+            }
+            else if(id>0){
+                var item = _db.Announcements.FirstOrDefault(x=> x.ID == id);
+                if(item != null)
+                {
+                    _db.Announcements.Remove(item);
+                    _db.SaveChanges();
+                    ViewBag.Msg="Information deleted.";
+                }
+            }
+            
+            model.Announcements = _db.Announcements.Where(x=> x.Visible && (DateTime.Compare(x.ValidFrom.Date, DateTime.Today.Date)>=0 || DateTime.Compare(x.ValidTo.Date, DateTime.Today.Date)<=0)).ToList();
+            model.Announcement = new Announcement(){
+                ValidFrom = DateTime.Today,
+                ValidTo = DateTime.Today
+            };
+            return View(model);
+        }
+                
         public IActionResult Users()
         {
             var model = _db.Users.ToList();
             
             return View(model);
         }
-        
-        [Authorize(Roles ="Admin")]
+                
         [HttpPost]
         public IActionResult Users(string name, string email, string password)
         {
