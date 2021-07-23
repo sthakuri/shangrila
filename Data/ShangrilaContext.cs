@@ -14,6 +14,7 @@ namespace shangrila.Data
         public DbSet<DishMenu> DishMenus { get; set; }
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Announcement> Announcements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +22,7 @@ namespace shangrila.Data
             modelBuilder.Entity<DishMenu>().ToTable("DishMenu");
             modelBuilder.Entity<Dish>().ToTable("Dish");
             modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<Announcement>().ToTable("Announcement");
         }
     }
 }
