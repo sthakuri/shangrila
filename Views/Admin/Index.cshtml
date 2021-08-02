@@ -79,31 +79,31 @@
                         <ul class="list-group">
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Sunday</h5>
-                                <p class="list-group-item-text">@Model.Sunday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Sunday.IsOpen? Model.Sunday.ServiceHours: "Closed")</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Monday</h5>
-                                <p class="list-group-item-text">@Model.Monday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Monday.IsOpen? Model.Monday.ServiceHours: "Closed")</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Tuesday</h5>
-                                <p class="list-group-item-text">@Model.Tuesday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Tuesday.IsOpen? Model.Tuesday.ServiceHours: "Closed")</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Wednesday</h5>
-                                <p class="list-group-item-text">@Model.Wednesday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Wednesday.IsOpen? Model.Wednesday.ServiceHours: "Closed")</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Thursday</h5>
-                                <p class="list-group-item-text">@Model.Thursday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Thursday.IsOpen? Model.Thursday.ServiceHours: "Closed")</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Friday</h5>
-                                <p class="list-group-item-text">@Model.Friday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Friday.IsOpen? Model.Friday.ServiceHours: "Closed")</p>
                             </div>
                             <div href="#" class="list-group-item">
                                 <h5 class="list-group-item-heading">Saturday</h5>
-                                <p class="list-group-item-text">@Model.Saturday.ServiceHours</p>
+                                <p class="list-group-item-text">@(Model.Saturday.IsOpen? Model.Saturday.ServiceHours: "Closed")</p>
                             </div>
                         </ul>
                         <a href="/Admin/ServiceHours" class="btn btn-info btn-outline">Edit</a>
